@@ -1,16 +1,21 @@
-import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Link } from "react-router-dom";
 import Input from "../../common/Input";
-import Button from "../../common/Button";
-import HidePassInput from "../../common/HidePassInput";
 import Message from "../../common/Message";
+import HidePassInput from "../../common/HidePassInput";
+import Button from "../../common/Button";
 
-import { Login, LoginSchema } from "../../../types/Auth.types";
-import { supabase } from "../../../api/supabase";
+import { Signup, SignupSchema } from "../../../types/Auth.types";
+import { useSignup } from "../hooks/useSignup";
 
 const inputs = [
+  {
+    name: "username",
+    label: "Username",
+    placeholder: "Username",
+    type: "text",
+  },
   {
     name: "email",
     label: "Email",
@@ -25,21 +30,23 @@ const inputs = [
   },
 ] as const;
 
-export default function LoginForm() {
-  const methods = useForm<Login>({
-    resolver: zodResolver(LoginSchema),
+export default function SignupForm() {
+  const methods = useForm<Signup>({
+    defaultValues: {
+      username: "testare",
+      email: "testare@example.com",
+      password: "P@rola1234",
+    },
+    resolver: zodResolver(SignupSchema),
   });
+  const { isLoading, error, signup } = useSignup();
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = methods;
 
-  const onSubmit: SubmitHandler<Login> = (data) => {
-    console.log(data);
-  };
-
-  console.log(supabase);
+  const onSubmit: SubmitHandler<Signup> = (data) => signup(data);
 
   return (
     <FormProvider {...methods}>
@@ -64,7 +71,7 @@ export default function LoginForm() {
           ) : (
             <div key={name} className="flex flex-col gap-1">
               <label htmlFor={name}>{label}</label>
-              <HidePassInput key={name} name={name} placeholder={placeholder} />
+              <HidePassInput key={name} name={name} placeholder={label} />
               {errors[name] && (
                 <Message variant="error">{errors[name].message}</Message>
               )}
@@ -72,14 +79,15 @@ export default function LoginForm() {
           )
         )}
 
-        <Link
-          to="/forgotPassword"
-          className="self-center xsm:self-end border-b border-b-transparent hover:border-slate-950 transition-all duration-100 mb-3"
-        >
-          Forgot your password?
-        </Link>
+        <div className="mt-4">
+          <Button disabled={isLoading}>Sign up</Button>
+        </div>
 
-        <Button>Login</Button>
+        {error && (
+          <div className="text-center">
+            <Message variant="error">{error}</Message>
+          </div>
+        )}
       </form>
     </FormProvider>
   );

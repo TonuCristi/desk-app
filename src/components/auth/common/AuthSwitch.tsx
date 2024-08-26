@@ -6,12 +6,13 @@ type Props = {
 
 export default function AuthSwitch({ to }: Props) {
   return (
-    <div className="flex gap-1.5 self-center">
-      <p className="">{`${
-        to === "login" ? "Already" : "Don't"
-      } have an account?`}</p>
+    <div className="flex gap-1.5 flex-col items-center xssm:flex-row">
+      <p>{`${to === "login" ? "Already" : "Don't"} have an account?`}</p>
 
-      <Link to="/signup" className="border-b border-slate-950">
+      <Link
+        to={to === "login" ? "/login" : "/signup"}
+        className="border-b border-slate-950"
+      >
         {to === "login" ? "Login" : "Sign up"}
       </Link>
     </div>

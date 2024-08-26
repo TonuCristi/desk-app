@@ -3,6 +3,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import ProtectedRoute from "./components/common/ProtectedRoute";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
+import GlobalProvider from "./contexts/GlobalContext";
+import AuthProvider from "./contexts/AuthContext";
 
 const router = createBrowserRouter([
   {
@@ -17,10 +21,24 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <SignupPage />,
       },
+      {
+        path: "/forgotPassword",
+        element: <ForgotPasswordPage />,
+      },
+      {
+        path: "/resetPassword",
+        element: <ResetPasswordPage />,
+      },
     ],
   },
 ]);
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <GlobalProvider>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </GlobalProvider>
+  );
 }

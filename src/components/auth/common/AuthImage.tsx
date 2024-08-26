@@ -13,7 +13,7 @@ const tags = [
 
 export default function AuthImage() {
   return (
-    <div className="bg-auth h-full bg-center bg-cover bg-no-repeat rounded-2xl text-slate-50 overflow-hidden">
+    <div className="bg-auth h-full bg-center bg-cover bg-no-repeat rounded-2xl text-slate-50 overflow-hidden hidden lg:block">
       <div className="backdrop-blur h-full w-full p-8 flex flex-col justify-center text-center items-center">
         <h2 className="text-3xl mb-6 font-medium">
           Discovering the Best <br />
@@ -25,9 +25,12 @@ export default function AuthImage() {
           dicta qui. Sapiente neque doloremque qui?
         </p>
 
-        <div className="flex items-center mx-auto gap-4">
+        <div className="flex items-center mx-auto gap-4 flex-col xl:flex-row">
           {tags.map((tag) => (
-            <div className="border border-slate-50 flex items-center gap-2 py-2 px-2.5 rounded-full">
+            <div
+              key={tag.text}
+              className="border border-slate-50 flex items-center gap-2 py-2 px-2.5 rounded-full"
+            >
               <span className="text-xl">{tag.icon}</span>
               <p>{tag.text}</p>
             </div>

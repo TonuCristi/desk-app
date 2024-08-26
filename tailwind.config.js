@@ -9,6 +9,10 @@ export default {
       backgroundImage: {
         auth: "url(/images/auth-bg.jpg)",
       },
+      screens: {
+        xsm: "425px",
+        xssm: "375px",
+      },
     },
   },
   plugins: [],
