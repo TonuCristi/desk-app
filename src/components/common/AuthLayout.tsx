@@ -6,6 +6,8 @@ import AuthImage from "../auth/common/AuthImage";
 export default function AuthLayout() {
   const location = useLocation();
 
+  console.log("Merge");
+
   return location.pathname === "/" ? (
     <div>Guest page</div>
   ) : (
