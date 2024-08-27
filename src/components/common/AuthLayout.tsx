@@ -1,10 +1,14 @@
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 
 import Logo from "./Logo";
 import AuthImage from "../auth/common/AuthImage";
 
 export default function AuthLayout() {
-  return (
+  const location = useLocation();
+
+  return location.pathname === "/" ? (
+    <div>Guest page</div>
+  ) : (
     <div className="h-screen p-8 max-w-screen-2xl m-auto">
       <div className="h-full grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="relative flex items-center justify-center">

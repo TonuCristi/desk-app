@@ -10,6 +10,7 @@ const buttonVariants = cva([], {
     },
     size: {
       full: "w-full",
+      auto: "w-auto",
     },
   },
   defaultVariants: {

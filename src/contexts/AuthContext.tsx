@@ -7,20 +7,21 @@ import {
 } from "react";
 
 import { User } from "../types/Auth.types";
+import { getToken } from "../utils/getToken";
 
 type AuthContext = {
-  token: string;
+  token: string | null;
   user: User | undefined;
   isLoading: boolean;
   error: string;
-  setToken: Dispatch<SetStateAction<string>>;
+  setToken: Dispatch<SetStateAction<string | null>>;
   setUser: Dispatch<SetStateAction<User | undefined>>;
   setIsLoading: Dispatch<SetStateAction<boolean>>;
   setError: Dispatch<SetStateAction<string>>;
 };
 
 export const AuthContext = createContext<AuthContext>({
-  token: "",
+  token: null,
   user: undefined,
   isLoading: false,
   error: "",
@@ -35,7 +36,7 @@ type Props = {
 };
 
 export default function AuthProvider({ children }: Props) {
-  const [token, setToken] = useState<string>("");
+  const [token, setToken] = useState<string | null>(getToken());
   const [user, setUser] = useState<User | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
