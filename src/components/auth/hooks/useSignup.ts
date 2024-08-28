@@ -27,7 +27,6 @@ export function useSignup() {
     if (error) {
       setError("Something went wrong...");
       setIsLoading(false);
-      return;
     }
 
     if (data.user && data.session) {
@@ -37,7 +36,6 @@ export function useSignup() {
       setUser(user);
       setIsLoading(false);
       navigate("/");
-      return;
     }
   }
 

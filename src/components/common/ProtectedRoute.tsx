@@ -12,7 +12,13 @@ export default function ProtectedRoute() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (token && location.pathname !== "/") {
+    if (
+      token &&
+      (location.pathname === "/login" ||
+        location.pathname === "/signup" ||
+        location.pathname === "/forgotPassword" ||
+        location.pathname === "/resetPassword")
+    ) {
       navigate("/");
     }
   }, [token, location, navigate]);

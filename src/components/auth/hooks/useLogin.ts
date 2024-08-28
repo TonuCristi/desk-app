@@ -19,7 +19,6 @@ export function useLogin() {
     if (error) {
       setError("Something went wrong...");
       setIsLoading(false);
-      return;
     }
 
     if (data.user && data.session) {
@@ -29,7 +28,6 @@ export function useLogin() {
       setUser(user);
       setIsLoading(false);
       navigate("/");
-      return;
     }
   }
 
