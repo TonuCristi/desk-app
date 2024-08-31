@@ -1,4 +1,5 @@
-import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
+
 import { NavLink } from "react-router-dom";
 
 const links = [
@@ -19,13 +20,13 @@ const links = [
 export default function NavLinks() {
   return (
     <nav>
-      <ul className="flex items-center gap-8">
+      <ul className="flex items-center gap-8 ">
         {links.map(({ text, to }) => (
           <li key={text}>
             <NavLink
               to={`/${to}`}
               className={({ isActive }) =>
-                clsx(
+                twMerge(
                   isActive && "border-b-2 border-slate-950",
                   "hover:border-b-2 border-slate-950 font-medium"
                 )

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { cva, VariantProps } from "class-variance-authority";
-import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
 
 const messageVariants = cva([], {
   variants: {
@@ -18,6 +18,8 @@ type Props = VariantProps<typeof messageVariants> & {
 
 export default function Message({ children, variant, className }: Props) {
   return (
-    <p className={clsx(messageVariants({ variant }), className)}>{children}</p>
+    <p className={twMerge(messageVariants({ variant }), className)}>
+      {children}
+    </p>
   );
 }

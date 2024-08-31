@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import { ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
 
 type Props = {
   children: ReactNode;
@@ -14,7 +14,7 @@ export default function InputIcon({ children, onClick, className }: Props) {
         e.preventDefault();
         if (onClick) onClick();
       }}
-      className={clsx(className)}
+      className={twMerge(className)}
     >
       {children}
     </button>

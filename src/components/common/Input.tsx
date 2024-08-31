@@ -5,7 +5,7 @@ import {
   ReactNode,
 } from "react";
 import { cva, VariantProps } from "class-variance-authority";
-import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
 
 import InputIcon from "./InputIcon";
 
@@ -60,7 +60,7 @@ const Input = forwardRef<HTMLInputElement, Props>(function Input(
   ref
 ) {
   return (
-    <div className={clsx(containerVariants({ variant }))}>
+    <div className={twMerge(containerVariants({ variant }))}>
       {leftIcon && (
         <InputIcon onClick={onLeftIconClick} className="pl-2.5">
           {leftIcon}
@@ -69,7 +69,7 @@ const Input = forwardRef<HTMLInputElement, Props>(function Input(
 
       <input
         ref={ref}
-        className={clsx(inputVariants({ variant }), className)}
+        className={twMerge(inputVariants({ variant }), className)}
         {...props}
       />
 

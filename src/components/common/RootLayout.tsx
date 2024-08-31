@@ -1,15 +1,16 @@
 import { Outlet } from "react-router";
-import { useFetchUser } from "../../hooks/useFetchUser";
 import Header from "./Header";
+
+import { useFetchUser } from "../../hooks/useFetchUser";
 
 export default function RootLayout() {
   useFetchUser();
 
   return (
-    <div className="">
+    <div>
       <Header />
 
-      <main className="px-8">
+      <main className="px-4 md:px-8">
         <Outlet />
       </main>
     </div>
