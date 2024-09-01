@@ -1,8 +1,8 @@
 import { Outlet, useLocation } from "react-router";
 
+import Header from "./header/Header";
 import Logo from "./Logo";
 import AuthImage from "../auth/common/AuthImage";
-import Header from "./Header";
 import { Link } from "react-router-dom";
 
 export default function AuthLayout() {
@@ -12,7 +12,7 @@ export default function AuthLayout() {
     location.pathname === "/products" ||
     location.pathname === "/about" ||
     location.pathname === "/contact" ? (
-    <div>
+    <div className="max-w-screen-2xl m-auto">
       <Header />
 
       <main className="px-4 md:px-8">

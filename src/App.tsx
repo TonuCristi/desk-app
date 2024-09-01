@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/common/ProtectedRoute";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import AuthProvider from "./contexts/AuthContext";
+import HomePage from "./pages/HomePage";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <div>Home</div>,
+        element: <HomePage />,
       },
       { path: "/products", element: <div>Products</div> },
       { path: "/about", element: <div>About</div> },

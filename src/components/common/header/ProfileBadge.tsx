@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-import Button from "./Button";
+import Button from "../Button";
 import { HiMiniChevronUp, HiMiniUserCircle } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 
-import { useLogout } from "../auth/hooks/useLogout";
-import { useClickOutside } from "../../hooks/useClickOutside";
+import { useLogout } from "../../auth/hooks/useLogout";
+import { useClickOutside } from "../../../hooks/useClickOutside";
 
 export default function ProfileBadge() {
   const logout = useLogout();
@@ -15,8 +15,8 @@ export default function ProfileBadge() {
   useClickOutside(containerRef, () => setIsOpen(false));
 
   return (
-    <div className="">
-      <div ref={containerRef} className="relative text-slate-50">
+    <div className="relative">
+      <div ref={containerRef} className="text-slate-50">
         <Button
           variant="empty"
           w="auto"

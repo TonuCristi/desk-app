@@ -1,19 +1,19 @@
 import { useContext } from "react";
 
 import { Link } from "react-router-dom";
-import Logo from "./Logo";
+import Logo from "../Logo";
 import NavLinks from "./NavLinks";
-import ProfileBadge from "./ProfileBadge";
 import FavouritesLink from "./FavouritesLink";
+import ProfileBadge from "./ProfileBadge";
 import BurgerMenu from "./BurgerMenu";
 
-import { AuthContext } from "../../contexts/AuthContext";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 export default function Header() {
   const { token } = useContext(AuthContext);
 
   return (
-    <header className="w-full grid grid-cols-2 lg:grid-cols-3 py-6 max-w-screen-2xl m-auto gap-8 items-center px-4 md:px-8">
+    <header className="w-full grid grid-cols-2 lg:grid-cols-3 py-6 gap-8 items-center">
       <Link to="/" className="justify-self-start">
         <Logo />
       </Link>

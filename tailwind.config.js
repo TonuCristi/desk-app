@@ -7,7 +7,8 @@ export default {
         primary: ["Poppins", "sans-serif"],
       },
       backgroundImage: {
-        auth: "url(/images/auth-bg.jpg)",
+        auth: "url(/auth/auth-bg.jpg)",
+        homeHeroSection: "url(/home/home-hero-section-bg.jpg)",
       },
       screens: {
         xsm: "425px",
