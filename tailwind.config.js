@@ -9,6 +9,7 @@ export default {
       backgroundImage: {
         auth: "url(/auth/auth-bg.jpg)",
         homeHeroSection: "url(/home/home-hero-section-bg.jpg)",
+        homeAboutSection: "url(/home/home-about-section.jpg)",
       },
       screens: {
         xsm: "425px",

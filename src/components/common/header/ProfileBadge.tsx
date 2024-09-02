@@ -9,8 +9,8 @@ import { useLogout } from "../../auth/hooks/useLogout";
 import { useClickOutside } from "../../../hooks/useClickOutside";
 
 export default function ProfileBadge() {
-  const logout = useLogout();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const logout = useLogout();
   const containerRef = useRef<HTMLDivElement>(null);
   useClickOutside(containerRef, () => setIsOpen(false));
 
@@ -35,7 +35,7 @@ export default function ProfileBadge() {
 
         {isOpen && (
           <div
-            className="overflow-hidden border-2 border-slate-950 absolute rounded-full mt-1 md:w-full top-full md:left-0 right-0 w-40"
+            className="overflow-hidden border-2 border-slate-950 absolute rounded-full mt-1 md:w-full top-full md:left-0 right-0 w-40 z-10"
             onClick={() => setIsOpen(false)}
           >
             <ul className="bg-slate-950 w-full flex flex-col">
