@@ -5,14 +5,23 @@ import SignupPage from "./pages/SignupPage";
 import ProtectedRoute from "./components/common/ProtectedRoute";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
-import GlobalProvider from "./contexts/GlobalContext";
 import AuthProvider from "./contexts/AuthContext";
+import HomePage from "./pages/HomePage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <ProtectedRoute />,
     children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      { path: "/products", element: <div>Products</div> },
+      { path: "/about", element: <div>About</div> },
+      { path: "/contact", element: <div>Contact</div> },
+      { path: "/profile", element: <div>Profile</div> },
+      { path: "/favourites", element: <div>Favourites</div> },
       {
         path: "/login",
         element: <LoginPage />,
@@ -35,10 +44,8 @@ const router = createBrowserRouter([
 
 export default function App() {
   return (
-    <GlobalProvider>
-      <AuthProvider>
-        <RouterProvider router={router} />
-      </AuthProvider>
-    </GlobalProvider>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   );
 }

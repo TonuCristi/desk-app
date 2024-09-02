@@ -8,7 +8,7 @@ import HidePassInput from "../../common/HidePassInput";
 import Message from "../../common/Message";
 
 import { Login, LoginSchema } from "../../../types/Auth.types";
-import { supabase } from "../../../api/supabase";
+import { useLogin } from "../hooks/useLogin";
 
 const inputs = [
   {
@@ -27,19 +27,20 @@ const inputs = [
 
 export default function LoginForm() {
   const methods = useForm<Login>({
+    defaultValues: {
+      email: "testare@example.com",
+      password: "P@rola1234",
+    },
     resolver: zodResolver(LoginSchema),
   });
+  const { isLoading, error, login } = useLogin();
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = methods;
 
-  const onSubmit: SubmitHandler<Login> = (data) => {
-    console.log(data);
-  };
-
-  console.log(supabase);
+  const onSubmit: SubmitHandler<Login> = (data) => login(data);
 
   return (
     <FormProvider {...methods}>
@@ -79,7 +80,13 @@ export default function LoginForm() {
           Forgot your password?
         </Link>
 
-        <Button>Login</Button>
+        <Button disabled={isLoading}>Login</Button>
+
+        {error && (
+          <div className="text-center">
+            <Message variant="error">{error}</Message>
+          </div>
+        )}
       </form>
     </FormProvider>
   );

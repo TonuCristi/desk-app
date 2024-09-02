@@ -10,12 +10,18 @@ import {
   ForgotPassword,
   ForgotPasswordSchema,
 } from "../../../types/Auth.types";
+import { useForgotPassword } from "../hooks/useForgotPassword";
 
 export default function ForgotPasswordForm() {
   const methods = useForm<ForgotPassword>({
+    defaultValues: {
+      email: "chrisdev2002@gmail.com",
+    },
     resolver: zodResolver(ForgotPasswordSchema),
   });
+  const forgotPassword = useForgotPassword();
   const [isSent, setIsSent] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const {
     handleSubmit,
     register,
@@ -23,8 +29,12 @@ export default function ForgotPasswordForm() {
   } = methods;
 
   const onSubmit: SubmitHandler<ForgotPassword> = (data) => {
-    setIsSent(true);
-    console.log(data);
+    function cb() {
+      setIsSent(true);
+      setIsLoading(false);
+    }
+
+    forgotPassword(data.email, cb);
   };
 
   return isSent ? (

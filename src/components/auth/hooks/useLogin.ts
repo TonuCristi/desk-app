@@ -1,27 +1,19 @@
 import { useContext } from "react";
-
-import { Signup } from "../../../types/Auth.types";
-import { AuthContext } from "../../../contexts/AuthContext";
-
 import { supabase } from "../../../api/supabase";
+import { Login } from "../../../types/Auth.types";
+import { AuthContext } from "../../../contexts/AuthContext";
 import { mapUser } from "../../../utils/mapUser";
 import { useNavigate } from "react-router";
 
-export function useSignup() {
+export function useLogin() {
   const { isLoading, error, setToken, setUser, setIsLoading, setError } =
     useContext(AuthContext);
   const navigate = useNavigate();
 
-  async function signup(user: Signup) {
+  async function login(user: Login) {
     setIsLoading(true);
-    const { data, error } = await supabase.auth.signUp({
-      email: user.email,
-      password: user.password,
-      options: {
-        data: {
-          username: user.username,
-        },
-      },
+    const { data, error } = await supabase.auth.signInWithPassword({
+      ...user,
     });
 
     if (error) {
@@ -39,5 +31,5 @@ export function useSignup() {
     }
   }
 
-  return { isLoading, error, signup };
+  return { isLoading, error, login };
 }
