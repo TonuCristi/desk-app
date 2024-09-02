@@ -1,5 +1,5 @@
-import { Signup } from "../types/Auth.types";
+// import { Signup } from "../types/Auth.types";
 
 export const AuthApi = {
-  async createUser(user: Signup) {},
+  // async createUser(user: Signup) {},
 };

@@ -21,7 +21,7 @@ export default function ForgotPasswordForm() {
   });
   const forgotPassword = useForgotPassword();
   const [isSent, setIsSent] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  // const [isLoading,setIsLoading] = useState<boolean>(false);
   const {
     handleSubmit,
     register,
@@ -31,7 +31,7 @@ export default function ForgotPasswordForm() {
   const onSubmit: SubmitHandler<ForgotPassword> = (data) => {
     function cb() {
       setIsSent(true);
-      setIsLoading(false);
+      // setIsLoading(false);
     }
 
     forgotPassword(data.email, cb);
