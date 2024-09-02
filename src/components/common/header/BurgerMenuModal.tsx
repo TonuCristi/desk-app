@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { HiMiniXMark } from "react-icons/hi2";
@@ -26,6 +26,14 @@ type Props = {
 };
 
 export default function BurgerMenuModal({ setIsMenuOpen }: Props) {
+  useEffect(() => {
+    document.body.style.overflowY = "hidden";
+
+    return () => {
+      document.body.style.overflowY = "auto";
+    };
+  }, []);
+
   return (
     <div className="absolute top-0 left-0 h-screen w-full backdrop-blur-xl p-4 xsm:p-8 flex items-center justify-center lg:hidden">
       <nav className="flex flex-col gap-6 w-full xsm:w-3/4 sm:w-2/3 md:w-1/2 bg-slate-950 items-center px-4 py-8 rounded-full">

@@ -13,7 +13,9 @@ export default function AuthLayout() {
     location.pathname === "/about" ||
     location.pathname === "/contact" ? (
     <div className="max-w-screen-2xl m-auto">
-      <Header />
+      <div className="px-4 md:px-8">
+        <Header />
+      </div>
 
       <main className="px-4 md:px-8">
         <Outlet />
