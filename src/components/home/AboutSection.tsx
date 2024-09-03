@@ -1,4 +1,4 @@
-import Button from "../common/Button";
+import { Link } from "react-router-dom";
 
 export default function AboutSection() {
   return (
@@ -22,9 +22,12 @@ export default function AboutSection() {
           deleniti ullam quam ea quidem. Facere illum numquam amet culpa fugiat
           adipisci reiciendis, necessitatibus modi debitis.
         </p>
-        <Button w="auto" className="px-8">
+        <Link
+          to="/about"
+          className="bg-slate-950 text-slate-50 px-8 py-2 hover:bg-slate-800 transition-colors rounded-full"
+        >
           About Us
-        </Button>
+        </Link>
       </div>
     </section>
   );
