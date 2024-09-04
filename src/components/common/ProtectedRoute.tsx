@@ -28,7 +28,7 @@ export default function ProtectedRoute() {
     (!token && checkAppPaths(location.pathname))
   )
     return (
-      <div className="h-screen w-full flex items-center justify-center">
+      <div className="flex h-screen w-full items-center justify-center">
         <Loader />
       </div>
     );

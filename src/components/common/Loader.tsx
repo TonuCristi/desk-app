@@ -1,7 +1,7 @@
 export default function Loader() {
   return (
-    <div className="bg-slate-950 w-20 h-20 rounded-full flex items-center justify-center">
-      <div className="border-8 rounded-full w-16 h-16 border-transparent border-b-slate-50 animate-spin"></div>
+    <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary">
+      <div className="h-16 w-16 animate-spin rounded-full border-8 border-transparent border-b-secondary"></div>
     </div>
   );
 }

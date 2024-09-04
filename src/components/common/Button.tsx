@@ -6,7 +6,7 @@ const buttonVariants = cva([], {
   variants: {
     variant: {
       primary:
-        "bg-slate-950 text-slate-50 px-2.5 py-2 hover:bg-slate-800 transition-colors rounded-full disabled:bg-slate-800",
+        "bg-primary text-secondary px-2.5 py-2 hover:bg-primary-hover transition-colors rounded-full disabled:bg-primary-disabled",
       empty: "",
     },
     w: {

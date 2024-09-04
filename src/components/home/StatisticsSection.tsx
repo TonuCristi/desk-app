@@ -20,13 +20,13 @@ const statistics = [
 export default function StatisticsSection() {
   return (
     <section className="flex justify-center px-4 sm:px-8">
-      <ul className="grid grid-cols-2 md:flex gap-8 md:gap-12 lg:gap-16 xl:gap-20 w-full justify-center">
+      <ul className="grid w-full grid-cols-2 justify-center gap-8 md:flex md:gap-12 lg:gap-16 xl:gap-20">
         {statistics.map(({ statistic, statisticName }) => (
           <li key={statisticName}>
-            <h2 className="text-3xl xsm:text-4xl sm:text-5xl md:text-4xl lg:text-5xl xl:text-7xl font-medium mb-2">
+            <h2 className="mb-2 text-3xl font-medium xsm:text-4xl sm:text-5xl md:text-4xl lg:text-5xl xl:text-7xl">
               {statistic}
             </h2>
-            <p className="text-base lg:text-xl text-slate-500">
+            <p className="text-base text-slate-500 lg:text-xl">
               {statisticName}
             </p>
           </li>

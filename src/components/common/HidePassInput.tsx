@@ -23,9 +23,9 @@ export default function HidePassInput({ name, ...props }: Props) {
       {...register(name)}
       rightIcon={
         isHidden ? (
-          <HiMiniEye className="text-slate-950" />
+          <HiMiniEye className="text-primary" />
         ) : (
-          <HiMiniEyeSlash className="text-slate-950" />
+          <HiMiniEyeSlash className="text-primary" />
         )
       }
       onRightIconClick={() => setIsHidden((prev) => !prev)}

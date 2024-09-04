@@ -1,32 +1,34 @@
 import { Link } from "react-router-dom";
 
+import { HOME_PAGE } from "../../constants/homePage";
+
 export default function AboutSection() {
   return (
-    <section className="grid lg:w-11/12 w-full sm:w-11/12 md:w-4/5 mx-auto grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+    <section className="mx-auto grid w-full grid-cols-1 items-center gap-8 sm:w-11/12 md:w-4/5 lg:w-11/12 lg:grid-cols-2">
       <img
         src="/home/home-hero-section-bg.jpg"
         alt="Photo with setup"
-        className="aspect-video object-cover lg:aspect-square rounded-3xl"
+        className="aspect-video rounded-3xl object-cover lg:aspect-square"
       />
 
       <div className="">
-        <p className="font-medium mb-2 lg:mb-6">Elegance - Timeless</p>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold mb-2 lg:mb-4">
-          Modern Style
+        <p className="mb-2 font-medium lg:mb-6">
+          {HOME_PAGE.ABOUT_SECTION.SUBTITLE}
+        </p>
+        <h2 className="mb-2 text-4xl font-semibold lg:mb-4 lg:text-5xl xl:text-6xl">
+          {HOME_PAGE.ABOUT_SECTION.TITLE_PRIMARY}
         </h2>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold mb-4 lg:mb-8">
-          Timeless Charm
+        <h2 className="mb-4 text-4xl font-semibold lg:mb-8 lg:text-5xl xl:text-6xl">
+          {HOME_PAGE.ABOUT_SECTION.TITLE_SECONDARY}
         </h2>
-        <p className="mb-4 lg:mb-6 leading-7 lg:w-11/12">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-          deleniti ullam quam ea quidem. Facere illum numquam amet culpa fugiat
-          adipisci reiciendis, necessitatibus modi debitis.
+        <p className="mb-4 leading-7 lg:mb-6 lg:w-11/12">
+          {HOME_PAGE.ABOUT_SECTION.DESCRIPTION}
         </p>
         <Link
           to="/about"
-          className="bg-slate-950 text-slate-50 px-8 py-2 hover:bg-slate-800 transition-colors rounded-full"
+          className="rounded-full bg-primary px-8 py-2 text-secondary transition-colors hover:bg-primary-disabled"
         >
-          About Us
+          {HOME_PAGE.ABOUT_SECTION.LINK}
         </Link>
       </div>
     </section>

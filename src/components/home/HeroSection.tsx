@@ -1,21 +1,24 @@
-import Button from "../common/Button";
+import { Link } from "react-router-dom";
+
+import { HOME_PAGE } from "../../constants/homePage";
 
 export default function HeroSection() {
   return (
-    <section className="bg-homeHeroSection h-[25rem] rounded-3xl bg-bottom bg-cover bg-no-repeat overflow-hidden">
-      <div className="backdrop-blur-sm h-full flex items-center justify-center p-8">
-        <div className="flex flex-col items-center w-full xs:w-4/5 md:w-3/5 lg:w-1/2">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-slate-50 font-semibold mb-2">
-            Aesthetic
+    <section className="h-[25rem] overflow-hidden rounded-3xl bg-homeHeroSection bg-cover bg-bottom bg-no-repeat">
+      <div className="flex h-full items-center justify-center p-8 backdrop-blur-sm">
+        <div className="xs:w-4/5 flex w-full flex-col items-center md:w-3/5 lg:w-1/2">
+          <h1 className="mb-2 text-5xl font-semibold text-secondary sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
+            {HOME_PAGE.HERO_SECTION.TITLE}
           </h1>
-          <p className="text-slate-50 leading-6 text-center mb-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Perspiciatis dolores eos consequuntur, excepturi eius quibusdam odit
-            pariatur ad minima.
+          <p className="mb-4 text-center leading-6 text-secondary">
+            {HOME_PAGE.HERO_SECTION.DESCRIPTION}
           </p>
-          <Button w="auto" className="px-8 border-2 border-slate-50">
-            Check products
-          </Button>
+          <Link
+            to="/about"
+            className="rounded-full border-2 border-secondary bg-primary px-8 py-2 text-secondary transition-colors hover:bg-primary-disabled"
+          >
+            {HOME_PAGE.HERO_SECTION.LINK}
+          </Link>
         </div>
       </div>
     </section>

@@ -38,8 +38,8 @@ export default function ForgotPasswordForm() {
   };
 
   return isSent ? (
-    <div className="flex items-center flex-col gap-3">
-      <p className="font-semibold text-center">
+    <div className="flex flex-col items-center gap-3">
+      <p className="text-center font-semibold">
         We sent you a password reset link!
       </p>
       <Button onClick={() => setIsSent(false)}>Retry</Button>
@@ -47,7 +47,7 @@ export default function ForgotPasswordForm() {
   ) : (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-2 w-full"
+      className="flex w-full flex-col gap-2"
     >
       <div className="flex flex-col gap-1">
         <label htmlFor="email">Email</label>
