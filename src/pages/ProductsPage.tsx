@@ -7,6 +7,7 @@ export default function ProductsPage() {
       const { data, error } = await supabase.from("Products").select("*");
 
       console.log(data);
+      console.log(error);
     }
 
     getProducts();
