@@ -25,10 +25,10 @@ export default function AboutSection() {
           {HOME_PAGE.ABOUT_SECTION.DESCRIPTION}
         </p>
         <Link
-          to="/about"
+          to={`/${HOME_PAGE.ABOUT_SECTION.LINK.TO}`}
           className="rounded-full bg-primary px-8 py-2 text-secondary transition-colors hover:bg-primary-disabled"
         >
-          {HOME_PAGE.ABOUT_SECTION.LINK}
+          {HOME_PAGE.ABOUT_SECTION.LINK.TEXT}
         </Link>
       </div>
     </section>

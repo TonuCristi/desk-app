@@ -24,7 +24,7 @@ export const COMMON = Object.freeze({
     TITLE: "Engage with US in Conversation.",
     DESCRIPTION:
       "In a global world base on communication, a brand must look beyond its borders, open up to new experiences, and dare to be different. Meeting hte brightest minds of one's time is the most effective way to nurture creativity.",
-    LINK: "Contact Us",
+    LINK: { TEXT: "Contact Us", TO: "contact" },
     LINKS: [
       {
         title: "About",

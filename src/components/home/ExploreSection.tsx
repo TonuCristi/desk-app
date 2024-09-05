@@ -47,10 +47,10 @@ export default function ExploreSection() {
 
         <div className="flex flex-col-reverse items-center gap-8 xl:flex-col">
           <Link
-            to="/about"
+            to={`/${HOME_PAGE.EXPLORE_SECTION.LINK.TO}`}
             className="rounded-full bg-primary px-8 py-2 text-secondary transition-colors hover:bg-primary-disabled xl:self-end"
           >
-            {HOME_PAGE.EXPLORE_SECTION.LINK}
+            {HOME_PAGE.EXPLORE_SECTION.LINK.TEXT}
           </Link>
           <p className="w-full text-center md:w-11/12 lg:w-4/5 xl:w-2/3 xl:self-end xl:text-right">
             {HOME_PAGE.EXPLORE_SECTION.DESCRIPTION}

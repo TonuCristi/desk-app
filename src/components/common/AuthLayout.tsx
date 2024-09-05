@@ -4,6 +4,7 @@ import Header from "./header/Header";
 import Logo from "./Logo";
 import AuthImage from "../auth/common/AuthImage";
 import { Link } from "react-router-dom";
+import Footer from "./footer/Footer";
 
 export default function AuthLayout() {
   const location = useLocation();
@@ -20,6 +21,8 @@ export default function AuthLayout() {
       <main className="px-4 md:px-8">
         <Outlet />
       </main>
+
+      <Footer />
     </div>
   ) : (
     <div className="m-auto h-screen max-w-screen-2xl p-8">

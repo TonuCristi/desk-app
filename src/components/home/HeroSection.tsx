@@ -14,10 +14,10 @@ export default function HeroSection() {
             {HOME_PAGE.HERO_SECTION.DESCRIPTION}
           </p>
           <Link
-            to="/about"
+            to={`/${HOME_PAGE.HERO_SECTION.LINK.TO}`}
             className="rounded-full border-2 border-secondary bg-primary px-8 py-2 text-secondary transition-colors hover:bg-primary-disabled"
           >
-            {HOME_PAGE.HERO_SECTION.LINK}
+            {HOME_PAGE.HERO_SECTION.LINK.TEXT}
           </Link>
         </div>
       </div>

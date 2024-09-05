@@ -13,10 +13,10 @@ export default function FooterContact() {
           {COMMON.FOOTER.DESCRIPTION}
         </p>
         <Link
-          to="/contact"
-          className="hover:bg-secondary-disabled rounded-full bg-secondary px-8 py-2 text-center text-primary transition-colors xl:self-start"
+          to={`/${COMMON.FOOTER.LINK.TO}`}
+          className="rounded-full bg-secondary px-8 py-2 text-center text-primary transition-colors hover:bg-secondary-disabled xl:self-start"
         >
-          {COMMON.FOOTER.LINK}
+          {COMMON.FOOTER.LINK.TEXT}
         </Link>
       </div>
       <img
