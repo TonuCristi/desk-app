@@ -52,7 +52,7 @@ export default function SignupForm() {
     <FormProvider {...methods}>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-2 w-full"
+        className="flex w-full flex-col gap-2"
       >
         {inputs.map(({ name, label, placeholder, type }) =>
           type === "text" ? (
@@ -76,7 +76,7 @@ export default function SignupForm() {
                 <Message variant="error">{errors[name].message}</Message>
               )}
             </div>
-          )
+          ),
         )}
 
         <div className="mt-4">

@@ -9,18 +9,18 @@ import { useLogout } from "../../auth/hooks/useLogout";
 import { useClickOutside } from "../../../hooks/useClickOutside";
 
 export default function ProfileBadge() {
-  const logout = useLogout();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const logout = useLogout();
   const containerRef = useRef<HTMLDivElement>(null);
   useClickOutside(containerRef, () => setIsOpen(false));
 
   return (
     <div className="relative">
-      <div ref={containerRef} className="text-slate-50">
+      <div ref={containerRef} className="text-secondary">
         <Button
           variant="empty"
           w="auto"
-          className="flex items-center gap-0.5 md:gap-2 bg-slate-950 px-4 py-2 rounded-full"
+          className="flex items-center gap-0.5 rounded-full bg-primary px-4 py-2 md:gap-2"
           onClick={() => setIsOpen((prev) => !prev)}
         >
           <HiMiniUserCircle className="text-2xl" />
@@ -28,26 +28,26 @@ export default function ProfileBadge() {
           <HiMiniChevronUp
             className={twMerge(
               isOpen && "rotate-180",
-              "text-2xl transition-transform duration-100"
+              "text-2xl transition-transform duration-100",
             )}
           />
         </Button>
 
         {isOpen && (
           <div
-            className="overflow-hidden border-2 border-slate-950 absolute rounded-full mt-1 md:w-full top-full md:left-0 right-0 w-40"
+            className="absolute right-0 top-full z-10 mt-1 w-40 overflow-hidden rounded-full border-2 border-primary md:left-0 md:w-full"
             onClick={() => setIsOpen(false)}
           >
-            <ul className="bg-slate-950 w-full flex flex-col">
-              <li className="hover:bg-slate-50 hover:text-slate-950 transition-colors">
+            <ul className="flex w-full flex-col bg-primary">
+              <li className="transition-colors hover:bg-secondary hover:text-primary">
                 <Link
                   to="/profile"
-                  className="px-2 py-1.5 inline-block w-full text-center"
+                  className="inline-block w-full px-2 py-1.5 text-center"
                 >
                   Profile
                 </Link>
               </li>
-              <li className="hover:bg-slate-50 hover:text-slate-950 transition-colors">
+              <li className="transition-colors hover:bg-secondary hover:text-primary">
                 <Button
                   variant="empty"
                   w="full"

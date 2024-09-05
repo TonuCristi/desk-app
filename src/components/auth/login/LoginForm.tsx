@@ -46,7 +46,7 @@ export default function LoginForm() {
     <FormProvider {...methods}>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-2 w-full"
+        className="flex w-full flex-col gap-2"
       >
         {inputs.map(({ name, label, placeholder, type }) =>
           type === "text" ? (
@@ -70,12 +70,12 @@ export default function LoginForm() {
                 <Message variant="error">{errors[name].message}</Message>
               )}
             </div>
-          )
+          ),
         )}
 
         <Link
           to="/forgotPassword"
-          className="self-center xsm:self-end border-b border-b-transparent hover:border-slate-950 transition-all duration-100 mb-3"
+          className="mb-3 self-center border-b border-b-transparent transition-all duration-100 hover:border-primary xsm:self-end"
         >
           Forgot your password?
         </Link>
