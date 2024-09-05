@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { HiMiniXMark } from "react-icons/hi2";
@@ -26,14 +26,22 @@ type Props = {
 };
 
 export default function BurgerMenuModal({ setIsMenuOpen }: Props) {
+  useEffect(() => {
+    document.body.style.overflowY = "hidden";
+
+    return () => {
+      document.body.style.overflowY = "auto";
+    };
+  }, []);
+
   return (
-    <div className="absolute top-0 left-0 h-screen w-full backdrop-blur-xl p-4 xsm:p-8 flex items-center justify-center lg:hidden">
-      <nav className="flex flex-col gap-6 w-full xsm:w-3/4 sm:w-2/3 md:w-1/2 bg-slate-950 items-center px-4 py-8 rounded-full">
+    <div className="absolute left-0 top-0 flex h-screen w-full items-center justify-center p-4 backdrop-blur-xl xsm:p-8 lg:hidden">
+      <nav className="flex w-full flex-col items-center gap-6 rounded-full bg-primary px-4 py-8 xsm:w-3/4 sm:w-2/3 md:w-1/2">
         <Link to="/" onClick={() => setIsMenuOpen(false)}>
           <Logo variant="secondary" />
         </Link>
 
-        <ul className="flex flex-col items-center gap-2 text-slate-50">
+        <ul className="flex flex-col items-center gap-2 text-secondary">
           {links.map(({ text, to }) => (
             <li key={text}>
               <NavLink
@@ -41,8 +49,8 @@ export default function BurgerMenuModal({ setIsMenuOpen }: Props) {
                 onClick={() => setIsMenuOpen(false)}
                 className={({ isActive }) =>
                   twMerge(
-                    isActive && "border-b-2 border-slate-50",
-                    "hover:border-b-2 border-slate-50 font-medium"
+                    isActive && "border-b-2 border-secondary",
+                    "border-secondary font-medium hover:border-b-2",
                   )
                 }
               >
@@ -55,10 +63,10 @@ export default function BurgerMenuModal({ setIsMenuOpen }: Props) {
 
       <Button
         w="auto"
-        className="absolute top-3 right-3"
+        className="absolute right-3 top-3"
         onClick={() => setIsMenuOpen(false)}
       >
-        <HiMiniXMark className="text-xl stroke-1" />
+        <HiMiniXMark className="stroke-1 text-xl" />
       </Button>
     </div>
   );

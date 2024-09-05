@@ -37,7 +37,7 @@ export default function ResetPasswordForm() {
     <FormProvider {...methods}>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-2 w-full"
+        className="flex w-full flex-col gap-2"
       >
         {inputs.map(({ name, label, placeholder }) => (
           <div key={name} className="flex flex-col gap-1">

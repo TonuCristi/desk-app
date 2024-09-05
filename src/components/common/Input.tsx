@@ -57,7 +57,7 @@ const Input = forwardRef<HTMLInputElement, Props>(function Input(
     className,
     ...props
   },
-  ref
+  ref,
 ) {
   return (
     <div className={twMerge(containerVariants({ variant }))}>

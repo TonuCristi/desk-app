@@ -16,13 +16,13 @@ export default function BurgerMenu() {
         className="flex items-center justify-center lg:hidden"
         onClick={() => setIsMenuOpen(true)}
       >
-        <HiMiniBars3 className="text-2xl stroke-1" />
+        <HiMiniBars3 className="stroke-1 text-2xl" />
       </Button>
 
       {isMenuOpen &&
         createPortal(
           <BurgerMenuModal setIsMenuOpen={setIsMenuOpen} />,
-          document.body
+          document.body,
         )}
     </>
   );

@@ -6,6 +6,6 @@
 
 @layer base {
   body {
-    @apply font-primary text-base text-slate-950 tracking-wide;
+    @apply font-primary text-base text-primary tracking-wide;
   }
 }
