@@ -1,11 +1,11 @@
-import { HiMiniArrowUpRight } from "react-icons/hi2";
 import Button from "../common/Button";
+import { HiMiniArrowUpRight } from "react-icons/hi2";
 
 type Props = {
   title: string;
 };
 
-export default function Card({ title }: Props) {
+export default function ExploreCard({ title }: Props) {
   return (
     <div className="flex h-full w-full items-end justify-between p-4 transition-all hover:backdrop-blur">
       <h3 className="text-xl font-semibold sm:text-2xl md:text-3xl">{title}</h3>

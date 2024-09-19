@@ -8,7 +8,7 @@ import { mapUser } from "../../../utils/mapUser";
 import { useNavigate } from "react-router";
 
 export function useSignup() {
-  const { isLoading, error, setToken, setUser, setIsLoading, setError } =
+  const { isLoading, error, setUser, setIsLoading, setError } =
     useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -31,9 +31,9 @@ export function useSignup() {
 
     if (data.user && data.session) {
       localStorage.setItem("token", data.session.access_token);
-      setToken(data.session.access_token);
+      // setToken(data.session.access_token);
       const user = mapUser(data.user);
-      setUser(user);
+      // setUser(user);
       setIsLoading(false);
       navigate("/");
     }

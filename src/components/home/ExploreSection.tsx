@@ -1,7 +1,8 @@
 import { twMerge } from "tailwind-merge";
 
-import Card from "./Card";
 import { Link } from "react-router-dom";
+import ExploreCard from "./ExploreCard";
+
 import { HOME_PAGE } from "../../constants/homePage";
 
 const links = [
@@ -68,7 +69,7 @@ export default function ExploreSection() {
               "aspect-square overflow-hidden rounded-xl bg-auth bg-cover bg-center",
             )}
           >
-            <Card title={title} />
+            <ExploreCard title={title} />
           </Link>
         ))}
       </div>

@@ -33,7 +33,9 @@ export const ResetPasswordSchema = z.object({
 export type ResetPassword = z.infer<typeof ResetPasswordSchema>;
 
 export type User = {
+  id: string;
   username: string;
   email: string;
   createdAt: string;
+  updatedAt: string;
 };
