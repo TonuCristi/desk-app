@@ -1,9 +1,5 @@
-import { User } from "@supabase/supabase-js";
+import { UserResponse } from "../types/Auth.types";
 
-export function mapUser(user: User) {
-  return {
-    username: user.user_metadata.username,
-    email: user.user_metadata.email,
-    createdAt: user.created_at,
-  };
+export function mapUser(user: UserResponse) {
+  return user;
 }

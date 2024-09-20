@@ -5,12 +5,13 @@ import AuthLayout from "./AuthLayout";
 import RootLayout from "./RootLayout";
 import Loader from "./Loader";
 
-import { AuthContext } from "../../contexts/AuthContext";
 import { checkAuthPaths } from "../../utils/checkAuthPaths";
 import { checkAppPaths } from "../../utils/checkAppPaths";
+import { GlobalContext } from "../../contexts/GlobalContext";
+import AuthProvider from "../../contexts/AuthContext";
 
 export default function ProtectedRoute() {
-  const { token } = useContext(AuthContext);
+  const { token } = useContext(GlobalContext);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -33,5 +34,11 @@ export default function ProtectedRoute() {
       </div>
     );
 
-  return token ? <RootLayout /> : <AuthLayout />;
+  return token ? (
+    <AuthProvider>
+      <RootLayout />
+    </AuthProvider>
+  ) : (
+    <AuthLayout />
+  );
 }

@@ -7,11 +7,11 @@ import ProfileBadge from "./ProfileBadge";
 import BurgerMenu from "./BurgerMenu";
 import { Link } from "react-router-dom";
 
-import { AuthContext } from "../../../contexts/AuthContext";
 import { COMMON } from "../../../constants/common";
+import { GlobalContext } from "../../../contexts/GlobalContext";
 
 export default function Header() {
-  const { token } = useContext(AuthContext);
+  const { token } = useContext(GlobalContext);
 
   return (
     <header className="grid w-full grid-cols-2 items-center gap-8 py-6 lg:grid-cols-3">

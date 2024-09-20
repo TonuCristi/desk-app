@@ -80,7 +80,9 @@ export default function SignupForm() {
         )}
 
         <div className="mt-4">
-          <Button disabled={isLoading}>Sign up</Button>
+          <Button disabled={isLoading} isLoading={isLoading}>
+            Sign up
+          </Button>
         </div>
 
         {error && (

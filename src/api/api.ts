@@ -8,7 +8,7 @@ export const api = axios.create({
 api.interceptors.request.use(function (config) {
   const token = getToken();
 
-  config.headers.Authorization = token;
+  config.headers.Authorization = `Bearer ${token}`;
 
   return config;
 });

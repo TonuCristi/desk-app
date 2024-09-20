@@ -1,15 +1,12 @@
 import { useContext } from "react";
-import { supabase } from "../../../api/supabase";
-import { AuthContext } from "../../../contexts/AuthContext";
 import { useNavigate } from "react-router";
+import { GlobalContext } from "../../../contexts/GlobalContext";
 
 export function useLogout() {
-  const { setToken, setUser } = useContext(AuthContext);
+  const { setToken } = useContext(GlobalContext);
   const naviagate = useNavigate();
 
-  async function logout() {
-    await supabase.auth.signOut();
-    setUser(undefined);
+  function logout() {
     setToken(null);
     localStorage.removeItem("token");
     naviagate("/");

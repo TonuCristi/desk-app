@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 import Button from "../Button";
@@ -7,12 +7,14 @@ import { Link } from "react-router-dom";
 
 import { useLogout } from "../../auth/hooks/useLogout";
 import { useClickOutside } from "../../../hooks/useClickOutside";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 export default function ProfileBadge() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const logout = useLogout();
   const containerRef = useRef<HTMLDivElement>(null);
   useClickOutside(containerRef, () => setIsOpen(false));
+  const { user } = useContext(AuthContext);
 
   return (
     <div className="relative">
@@ -24,7 +26,7 @@ export default function ProfileBadge() {
           onClick={() => setIsOpen((prev) => !prev)}
         >
           <HiMiniUserCircle className="text-2xl" />
-          <span className="hidden md:block">Tonu Cristian</span>
+          <span className="hidden md:block">{user?.username}</span>
           <HiMiniChevronUp
             className={twMerge(
               isOpen && "rotate-180",

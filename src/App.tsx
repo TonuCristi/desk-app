@@ -5,9 +5,9 @@ import SignupPage from "./pages/SignupPage";
 import ProtectedRoute from "./components/common/ProtectedRoute";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
-import AuthProvider from "./contexts/AuthContext";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
+import GlobalProvider from "./contexts/GlobalContext";
 
 const router = createBrowserRouter([
   {
@@ -45,8 +45,8 @@ const router = createBrowserRouter([
 
 export default function App() {
   return (
-    <AuthProvider>
+    <GlobalProvider>
       <RouterProvider router={router} />
-    </AuthProvider>
+    </GlobalProvider>
   );
 }

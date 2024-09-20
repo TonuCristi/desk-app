@@ -2,6 +2,8 @@ import { cva, VariantProps } from "class-variance-authority";
 import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
+import SmallLoader from "./SmallLoader";
+
 const buttonVariants = cva([], {
   variants: {
     variant: {
@@ -27,6 +29,7 @@ type Props = DetailedHTMLProps<
 > &
   VariantProps<typeof buttonVariants> & {
     children: ReactNode;
+    isLoading?: boolean;
   };
 
 export default function Button({
@@ -34,6 +37,7 @@ export default function Button({
   w,
   children,
   className,
+  isLoading,
   ...props
 }: Props) {
   return (
@@ -41,7 +45,17 @@ export default function Button({
       className={twMerge(buttonVariants({ variant, w }), className)}
       {...props}
     >
-      {children}
+      {isLoading ? (
+        <span className="relative">
+          <span>{children}</span>
+
+          <div className="absolute left-full top-1/2 ml-2 -translate-y-1/2">
+            <SmallLoader />
+          </div>
+        </span>
+      ) : (
+        children
+      )}
     </button>
   );
 }

@@ -1,22 +1,21 @@
 import { useContext, useEffect } from "react";
 
-import { supabase } from "../api/supabase";
 import { AuthContext } from "../contexts/AuthContext";
 import { mapUser } from "../utils/mapUser";
+import { AuthApi } from "../services/AuthApi";
 
 export function useFetchUser() {
   const { setUser, setIsLoading } = useContext(AuthContext);
 
   useEffect(() => {
-    async function getUser() {
+    function getUser() {
       setIsLoading(true);
-      const { data } = await supabase.auth.getUser();
-
-      if (data.user) {
-        const user = mapUser(data.user);
-        setUser(user);
-        setIsLoading(false);
-      }
+      AuthApi.getLoggedUser()
+        .then((res) => {
+          const user = mapUser(res);
+          setUser(user);
+        })
+        .finally(() => setIsLoading(false));
     }
 
     getUser();
