@@ -1,9 +1,10 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router";
 
 import { GlobalContext } from "../../../contexts/GlobalContext";
 import { AuthApi } from "../../../services/AuthApi";
 import { Signup } from "../../../types/Auth.types";
-import { useNavigate } from "react-router";
+import { storeToken } from "../../../utils/storeToken";
 
 export function useSignup() {
   const { isLoading, error, setToken, setIsLoading, setError } =
@@ -16,7 +17,7 @@ export function useSignup() {
       .then((res) => {
         setToken(res);
         navigate("/");
-        localStorage.setItem("token", res);
+        storeToken(res);
       })
       .catch((err) => setError(err.response.data.message))
       .finally(() => setIsLoading(false));

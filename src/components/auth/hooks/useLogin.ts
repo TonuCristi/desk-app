@@ -1,34 +1,26 @@
 import { useContext } from "react";
-import { supabase } from "../../../api/supabase";
-import { Login } from "../../../types/Auth.types";
-import { AuthContext } from "../../../contexts/AuthContext";
-import { mapUser } from "../../../utils/mapUser";
 import { useNavigate } from "react-router";
 
+import { Login } from "../../../types/Auth.types";
+import { AuthApi } from "../../../services/AuthApi";
+import { GlobalContext } from "../../../contexts/GlobalContext";
+import { storeToken } from "../../../utils/storeToken";
+
 export function useLogin() {
-  const { isLoading, error, setToken, setUser, setIsLoading, setError } =
-    useContext(AuthContext);
+  const { isLoading, error, setToken, setIsLoading, setError } =
+    useContext(GlobalContext);
   const navigate = useNavigate();
 
-  async function login(user: Login) {
+  function login(user: Login) {
     setIsLoading(true);
-    const { data, error } = await supabase.auth.signInWithPassword({
-      ...user,
-    });
-
-    if (error) {
-      setError("Something went wrong...");
-      setIsLoading(false);
-    }
-
-    if (data.user && data.session) {
-      localStorage.setItem("token", data.session.access_token);
-      setToken(data.session.access_token);
-      const user = mapUser(data.user);
-      setUser(user);
-      setIsLoading(false);
-      navigate("/");
-    }
+    AuthApi.loginUser(user)
+      .then((res) => {
+        setToken(res);
+        navigate("/");
+        storeToken(res);
+      })
+      .catch((err) => setError(err.response.data.message))
+      .finally(() => setIsLoading(false));
   }
 
   return { isLoading, error, login };
