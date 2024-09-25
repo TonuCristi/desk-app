@@ -8,6 +8,7 @@ import ResetPasswordPage from "./pages/ResetPasswordPage";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import GlobalProvider from "./contexts/GlobalContext";
+import ProfilePage from "./pages/ProfilePage";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
       { path: "/products", element: <ProductsPage /> },
       { path: "/about", element: <div>About</div> },
       { path: "/contact", element: <div>Contact</div> },
-      { path: "/profile", element: <div>Profile</div> },
+      { path: "/profile", element: <ProfilePage /> },
       { path: "/favourites", element: <div>Favourites</div> },
       {
         path: "/login",

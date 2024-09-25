@@ -80,7 +80,9 @@ export default function LoginForm() {
           Forgot your password?
         </Link>
 
-        <Button disabled={isLoading}>Login</Button>
+        <Button disabled={isLoading} isLoading={isLoading}>
+          Login
+        </Button>
 
         {error && (
           <div className="text-center">
