@@ -27,10 +27,17 @@ export type ForgotPassword = z.infer<typeof ForgotPasswordSchema>;
 
 export const ResetPasswordSchema = z.object({
   newPassword: PasswordSchema,
-  confirmNewPassword: PasswordSchema,
+  repeatNewPassword: PasswordSchema,
 });
 
 export type ResetPassword = z.infer<typeof ResetPasswordSchema>;
+
+export const EditUserSchema = z.object({
+  username: UsernameSchema,
+  email: EmailSchema,
+});
+
+export type EditUser = z.infer<typeof EditUserSchema>;
 
 export type UserResponse = {
   id: string;

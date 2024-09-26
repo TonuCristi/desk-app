@@ -1,10 +1,21 @@
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { PROFILE_PAGE } from "../../constants/profilePage";
 import Button from "../common/Button";
 import Input from "../common/Input";
+import { ResetPassword, ResetPasswordSchema } from "../../types/Auth.types";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Message from "../common/Message";
 
 export default function ChangePasswordSection() {
-  const { register } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ResetPassword>({ resolver: zodResolver(ResetPasswordSchema) });
+
+  const onSubmit: SubmitHandler<ResetPassword> = (data) => {
+    console.log(data);
+  };
 
   return (
     <section className="flex flex-col items-center">
@@ -12,7 +23,7 @@ export default function ChangePasswordSection() {
         <h2 className="text-2xl">
           {PROFILE_PAGE.RESET_PASSWORD_SECTION.TITLE}
         </h2>
-        <form className="flex flex-col gap-3">
+        <form className="flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
           {PROFILE_PAGE.RESET_PASSWORD_SECTION.EDIT_INPUTS.map(
             ({ LABEL, HTML_FOR, PLACEHOLDER, NAME }) => (
               <div key={LABEL} className="flex w-full flex-col gap-1">
@@ -22,6 +33,9 @@ export default function ChangePasswordSection() {
                   id={HTML_FOR}
                   {...register(NAME)}
                 />
+                {errors[NAME] && (
+                  <Message variant="error">{errors[NAME].message}</Message>
+                )}
               </div>
             ),
           )}

@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { api } from "../api/api";
-import { Login, Signup, UserResponse } from "../types/Auth.types";
+import { EditUser, Login, Signup, UserResponse } from "../types/Auth.types";
 
 const BASE_URL_AUTH = "/api/auth";
 const BASE_URL_USERS = "/api/users";
@@ -19,6 +19,11 @@ export const AuthApi = {
   getLoggedUser() {
     return api
       .get(`${BASE_URL_USERS}/currentUser`)
+      .then(({ data }: AxiosResponse<UserResponse>) => data);
+  },
+  editUser(user: EditUser) {
+    return api
+      .put(`${BASE_URL_USERS}/editUser`, user)
       .then(({ data }: AxiosResponse<UserResponse>) => data);
   },
 };

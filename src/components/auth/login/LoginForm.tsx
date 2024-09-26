@@ -29,7 +29,7 @@ export default function LoginForm() {
   const methods = useForm<Login>({
     defaultValues: {
       email: "testare@example.com",
-      password: "P@rola1234",
+      password: "Test@re1234",
     },
     resolver: zodResolver(LoginSchema),
   });
